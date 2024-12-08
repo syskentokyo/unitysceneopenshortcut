@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22884bdc13f4d4effa939c83664ea263, type: 3}
+  m_Name: RootConfig
+  m_EditorClassIdentifier: 
+  _splashSceneConfig: {fileID: 11400000, guid: 508a1ad746a7543eb9f4b2903eed246b, type: 2}
+  _main1SceneConfig: {fileID: 11400000, guid: f663cf946b1db480d95891c9ee0b7aa3, type: 2}
+  _main2SceneConfig: {fileID: 11400000, guid: 69e94921f223f41e0841e022b5498ca7, type: 2}
+  _main3SceneConfig: {fileID: 11400000, guid: 84cffc67b5c3949f69225e8fa67606dd, type: 2}
+  _custom1SceneConfig: {fileID: 11400000, guid: 0006bc5651297441b8b02cf75ba7a9d6, type: 2}
+  _custom2SceneConfig: {fileID: 11400000, guid: c878a61bcce8f47e6a0fe192e88d5ce9, type: 2}
+  _custom3SceneConfig: {fileID: 11400000, guid: 729ebffc5c3ac4dafb97cacae950703f, type: 2}
+  _custom4SceneConfig: {fileID: 11400000, guid: 08ff7d34f43f2437c9f662653e7d2275, type: 2}
+  _custom5SceneConfig: {fileID: 11400000, guid: abf62e5d48249405bb2c7320c978a496, type: 2}
