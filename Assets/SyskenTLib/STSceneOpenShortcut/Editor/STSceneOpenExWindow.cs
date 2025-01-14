@@ -62,12 +62,12 @@ namespace SyskenTLib.STSceneOpenShortcutEditor
 
             using (new GUILayout.VerticalScope())
             {
-                using (GUILayout.ScrollViewScope scroll = new GUILayout.ScrollViewScope(
-                           _currentMainVerticalScrollPosition,
-                           EditorStyles.helpBox, GUILayout.Width(1100)))
+                using (GUILayout.ScrollViewScope scrollView = new GUILayout.ScrollViewScope(
+                           _currentMainVerticalScrollPosition, GUILayout.Width(1100)))
                 {
                     _sceneList.ForEach(scene =>
                     {
+                        _currentMainVerticalScrollPosition = scrollView.scrollPosition;
                         using (new GUILayout.HorizontalScope())
                         {
                             EditorGUILayout.ObjectField(scene, typeof(SceneAsset), false, GUILayout.Width(200));
