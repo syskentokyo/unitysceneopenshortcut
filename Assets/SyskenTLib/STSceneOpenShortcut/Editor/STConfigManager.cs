@@ -22,6 +22,20 @@ namespace SyskenTLib.STSceneOpenShortcutEditor
             return rootConfig;
         }
         
+        
+        
+        public static STSceneListConfig GetSceneListConfig()
+        {
+
+            STSceneListConfig rootConfig= AssetDatabase.FindAssets("t:STSceneListConfig")
+                .ToList()
+                .Select(nextGUID => AssetDatabase.GUIDToAssetPath(nextGUID))
+                .ToList()
+                .Select(configPath => AssetDatabase.LoadAssetAtPath<STSceneListConfig>(configPath))
+                .FirstOrDefault();
+
+            return rootConfig;
+        }
      
 
     }

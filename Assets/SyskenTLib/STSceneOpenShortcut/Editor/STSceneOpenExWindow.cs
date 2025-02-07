@@ -59,6 +59,17 @@ namespace SyskenTLib.STSceneOpenShortcutEditor
 
                 GUILayout.Label("シーンの一覧を取得します");
             }
+            
+            using (new GUILayout.HorizontalScope())
+            {
+                if (GUILayout.Button("Select Config", GUILayout.Width(100)))
+                {
+                    STSceneListConfig config = STConfigManager.GetSceneListConfig(); 
+                    EditorGUIUtility.PingObject(config);
+                }
+
+                GUILayout.Label("非表示のシーンの一覧を取得します");
+            }
 
             using (new GUILayout.VerticalScope())
             {
@@ -81,7 +92,14 @@ namespace SyskenTLib.STSceneOpenShortcutEditor
                             {
                                 STSceneOpenManager.OpenScene(null, new List<SceneAsset>() { scene });
                             }
+                            
+                            GUILayout.Space(10);
  
+                            if (GUILayout.Button("Hide", GUILayout.Width(100)))
+                            {
+                                STSceneListManager.AddHideScene(scene);
+                                _sceneList = SearchAllScene();
+                            }
 
                         }
 
@@ -97,15 +115,23 @@ namespace SyskenTLib.STSceneOpenShortcutEditor
 
         private static  List<SceneAsset> SearchAllScene()
         {
-
+            STSceneListConfig config = STConfigManager.GetSceneListConfig();
+            List<string> hideScenePathList =
+                config
+                    .hiddenSceneList
+                    .Select(hideScene => AssetDatabase.GetAssetPath(hideScene))
+                    .ToList();
+            
             List<SceneAsset> sceneAssetList = AssetDatabase.FindAssets("t:SceneAsset")
                 .ToList()
                 .Select(nextGUID => AssetDatabase.GUIDToAssetPath(nextGUID))
                 .ToList()
+                .Where(path => hideScenePathList.Contains(path) == false)
                 .Where(path => path.StartsWith("Assets/"))//Packages/のシーンを対象としないためのフィルタ
                 .OrderBy(path => path)// パスの順番を整理
                 .Select(sceneAsset => AssetDatabase.LoadAssetAtPath<SceneAsset>(sceneAsset))
                 .ToList();
+            
 
             return sceneAssetList;
         }
